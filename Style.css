@@ -1,0 +1,16 @@
+/* Define styles for seats */
+.seat {
+    width: 40px;
+    height: 40px;
+    background-color: #ccc;
+    margin: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  /* Style for selected seats */
+  .selected {
+    background-color: #ff0000;
+  }
+  
