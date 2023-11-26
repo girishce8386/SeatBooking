@@ -1,30 +1,51 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const seatMap = document.querySelector(".seat-map");
-  
-    // Number of rows and columns in the stadium
-    const numRows = 10;
-    const numCols = 10;
-  
-    // Create seats dynamically
-    for (let i = 0; i < numRows; i++) {
-      for (let j = 0; j < numCols; j++) {
-        const seat = document.createElement("div");
-        seat.classList.add("seat");
-        seat.setAttribute("data-row", i + 1);
-        seat.setAttribute("data-col", j + 1);
-        seatMap.appendChild(seat);
-      }
-    }
-  
-    // Handle seat selection
-    seatMap.addEventListener("click", function(event) {
-      if (event.target.classList.contains("seat")) {
-        event.target.classList.toggle("selected");
-        const row = event.target.getAttribute("data-row");
-        const col = event.target.getAttribute("data-col");
-        console.log(`Seat selected - Row: ${row}, Column: ${col}`);
-        // You can implement further logic for seat booking here
-      }
-    });
-  });
-  
+// Seat data - replace this with actual seat data
+const totalSeats = 100;
+const seatPrice = 50;
+let selectedSeats = [];
+let totalPrice = 0;
+
+// Generate seat layout dynamically
+const seatMap = document.querySelector('.seat-map');
+
+for (let i = 1; i <= totalSeats; i++) {
+  const seat = document.createElement('div');
+  seat.classList.add('seat');
+  seat.textContent = i;
+  seat.addEventListener('click', () => selectSeat(i, seat));
+  seatMap.appendChild(seat);
+}
+
+// Function to select/deselect seats
+function selectSeat(seatNumber, seatElement) {
+  if (selectedSeats.includes(seatNumber)) {
+    selectedSeats = selectedSeats.filter(seat => seat !== seatNumber);
+    seatElement.classList.remove('selected');
+  } else {
+    selectedSeats.push(seatNumber);
+    seatElement.classList.add('selected');
+  }
+
+  updateSelectedSeats();
+}
+
+// Update selected seats and total price
+function updateSelectedSeats() {
+  const selectedSeatsDisplay = document.getElementById('selected-seats');
+  const totalPriceDisplay = document.getElementById('total-price');
+
+  selectedSeatsDisplay.textContent = selectedSeats.join(', ');
+  totalPrice = selectedSeats.length * seatPrice;
+  totalPriceDisplay.textContent = totalPrice;
+}
+
+// Checkout button functionality (simulated redirection)
+const checkoutBtn = document.getElementById('checkout-btn');
+checkoutBtn.addEventListener('click', () => {
+  if (selectedSeats.length > 0) {
+    // Simulated payment redirection
+    alert(`Redirecting to payment gateway. Total amount: $${totalPrice}`);
+    // Replace the alert with actual payment gateway integration code
+  } else {
+    alert('Please select at least one seat to proceed to checkout.');
+  }
+});

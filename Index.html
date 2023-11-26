@@ -3,15 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>AT&T Stadium Seat Booking</title>
-  <link rel="stylesheet" href="Style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>AT&T Stadium Seat Booking</h1>
-  <div class="seat-map">
-    <!-- Seats will be dynamically generated here -->
-  </div>
+  <h1>AT&T Stadium Seat Booking - Dallas Cowboys</h1>
   
-  <script src="Script.js"></script>
+  <div class="seat-map">
+    <!-- Seat layout will be dynamically generated here -->
+  </div>
+
+  <div class="checkout">
+    <h2>Selected Seats</h2>
+    <p id="selected-seats"></p>
+    <p>Total Price: $<span id="total-price">0</span></p>
+    <button id="checkout-btn">Checkout</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
-
