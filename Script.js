@@ -1,50 +1,27 @@
-// Seat data - replace this with actual seat data
-const totalSeats = 100;
-const seatPrice = 50;
-let selectedSeats = [];
-let totalPrice = 0;
+// JavaScript for seat selection and checkout
+const seats = document.querySelectorAll('.seat');
 
-// Generate seat layout dynamically
-const seatMap = document.querySelector('.seat-map');
+seats.forEach(seat => {
+  seat.addEventListener('click', () => {
+    seat.classList.toggle('selected');
+    calculatePrice();
+  });
+});
 
-for (let i = 1; i <= totalSeats; i++) {
-  const seat = document.createElement('div');
-  seat.classList.add('seat');
-  seat.textContent = i;
-  seat.addEventListener('click', () => selectSeat(i, seat));
-  seatMap.appendChild(seat);
+function calculatePrice() {
+  const selectedSeats = document.querySelectorAll('.seat.selected');
+  const totalPrice = selectedSeats.length * 50; // Assuming each seat costs $50
+  console.log(`Total Price: $${totalPrice}`);
 }
 
-// Function to select/deselect seats
-function selectSeat(seatNumber, seatElement) {
-  if (selectedSeats.includes(seatNumber)) {
-    selectedSeats = selectedSeats.filter(seat => seat !== seatNumber);
-    seatElement.classList.remove('selected');
-  } else {
-    selectedSeats.push(seatNumber);
-    seatElement.classList.add('selected');
-  }
+const checkoutBtn = document.getElementById('checkoutBtn');
 
-  updateSelectedSeats();
-}
-
-// Update selected seats and total price
-function updateSelectedSeats() {
-  const selectedSeatsDisplay = document.getElementById('selected-seats');
-  const totalPriceDisplay = document.getElementById('total-price');
-
-  selectedSeatsDisplay.textContent = selectedSeats.join(', ');
-  totalPrice = selectedSeats.length * seatPrice;
-  totalPriceDisplay.textContent = totalPrice;
-}
-
-// Checkout button functionality (simulated redirection)
-const checkoutBtn = document.getElementById('checkout-btn');
 checkoutBtn.addEventListener('click', () => {
+  const selectedSeats = document.querySelectorAll('.seat.selected');
   if (selectedSeats.length > 0) {
-    // Simulated payment redirection
-    alert(`Redirecting to payment gateway. Total amount: $${totalPrice}`);
-    // Replace the alert with actual payment gateway integration code
+    // You can redirect to the payment page or process payment here
+    // For simplicity, let's log a message
+    console.log('Redirecting to payment...');
   } else {
     alert('Please select at least one seat to proceed to checkout.');
   }

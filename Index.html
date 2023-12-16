@@ -2,23 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AT&T Stadium Seat Booking</title>
+  <title>Dallas Cowboys Seat Booking</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>AT&T Stadium Seat Booking - Dallas Cowboys</h1>
-  
-  <div class="seat-map">
-    <!-- Seat layout will be dynamically generated here -->
-  </div>
-
-  <div class="checkout">
-    <h2>Selected Seats</h2>
-    <p id="selected-seats"></p>
-    <p>Total Price: $<span id="total-price">0</span></p>
-    <button id="checkout-btn">Checkout</button>
+  <div class="container">
+    <h1>Dallas Cowboys Seat Booking</h1>
+    <div class="field">
+      <div class="football-ground">
+        <!-- Football ground layout -->
+        <!-- You can use divs to represent seats -->
+        <!-- For simplicity, let's assume a grid layout -->
+        <!-- Each seat is represented by a div -->
+        <!-- You can add more styles to represent available, booked, or selected seats -->
+        <div class="seat"></div>
+        <!-- Repeat this for other seats -->
+      </div>
+    </div>
+    <div class="field">
+      <button id="checkoutBtn">Checkout</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
+

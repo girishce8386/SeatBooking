@@ -1,16 +1,39 @@
-/* Define styles for seats */
+/* Basic styles for the seat booking portal */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+.container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.football-ground {
+  display: grid;
+  grid-template-columns: repeat(10, 40px); /* Adjust based on the layout */
+  grid-gap: 5px;
+}
+
 .seat {
-    width: 40px;
-    height: 40px;
-    background-color: #ccc;
-    margin: 5px;
-    border-radius: 5px;
-    display: inline-block;
-    cursor: pointer;
-  }
-  
-  /* Style for selected seats */
-  .selected {
-    background-color: #ff0000;
-  }
-  
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  border: 1px solid #aaa;
+  cursor: pointer;
+}
+
+/* Style for selected seats */
+.seat.selected {
+  background-color: #ffcc00;
+}
